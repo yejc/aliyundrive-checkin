@@ -1,6 +1,7 @@
+import argparse
 import os
 import re
-import argparse
+
 from aliyundrive import Aliyundrive
 from message_send import MessageSend
 
@@ -11,6 +12,7 @@ def main():
     args = parser.parse_args()
 
     token_string = args.token_string
+    print('token=%s' % token_string)
     pushplus_token = os.environ.get('PUSHPLUS_TOKEN')
     serverChan_sendkey = os.environ.get('SERVERCHAN_SENDKEY')
     weCom_tokens = os.environ.get('WECOM_TOKENS')
@@ -45,7 +47,7 @@ def main():
     message_send = MessageSend()
     message_send.send_all(message_tokens, title, message_all)
 
-    print('finish')
+    print('finish, message_all=%s' % message_all)
 
 
 if __name__ == '__main__':
